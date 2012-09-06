@@ -15,7 +15,7 @@ public:
 	{	
 		scene.SetViewPoint(8,180,80);
 		Pose3D t;
-		t=m.getRobotPose();
+		t=m.realPose;
 		scene.SetViewCenter(t.position.x,t.position.y,t.position.z);
 		scene.BackgroundColor(0.3,0.3,0.3);
 
@@ -29,7 +29,7 @@ public:
 	{	
 		if(numRobot==0)
 		{
-			Transformation3D t=manager.getRobotPose();
+			Transformation3D t=manager.realPose;
 
 			scene.SetViewCenter(t.position.x,t.position.y,t.position.z);
 			double dist,alfa,beta;

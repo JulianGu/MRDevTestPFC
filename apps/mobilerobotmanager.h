@@ -14,6 +14,7 @@ using namespace std;
 class MobileRobotManager
 {
 public:
+	bool drawRobot;
 	MobileRobot* robot;
 	MobileRobot* robotViz;
 	Localizer localizer;
@@ -21,6 +22,7 @@ public:
 	Path3D groundTraj;
 
 	MobileRobotManager(){
+		drawRobot=true;
 		robot=0;
 		robotViz=0;
 		groundTraj.setColor(0,255,0);
@@ -35,13 +37,18 @@ public:
 		control.drawGL();
 		groundTraj.drawGL();
 		localizer.drawGL();
-		if(robotViz)
+		if(robotViz && drawRobot)
 		{
 			robotViz->drawGL();
 		}
 	}
 	void keyDown(unsigned char key)
 	{
+		if (key=='r')
+		{
+			drawRobot=!drawRobot;
+			return;
+		}
 		control.keyDown(key);
 	}
 	void processAll();
